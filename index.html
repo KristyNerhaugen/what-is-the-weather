@@ -12,42 +12,48 @@
 
 <body>
    <!-- header -->
-   <header>
-      <h1> What's the Weather? A Weather Dashboard </h1>
+   <header class="container">
+      <div class="row">
+         <div class="col-md-12 text-center">
+            <h1> What's the Weather? A Weather Dashboard </h1>
+         </div>
+      </div>
    </header>
 
    <!-- main section  -->
-   <main>
-      <!-- left side nagivation section -->
-      <div class="container" id="search-bar">
-         <form id="search-form">
-            <h2>Search for a City:</h2>
-            <input type="text" placeholder="Enter city name here"> </input>
-            <button>Search</button>
-         </form>
-         <div id="cities">
-            <h2>Recently Searched for Cities</h2>
-            <button>Placeholder City One</button>
-            <button>Placeholder City Two</button>
-         </div>
-      </div>
-      <!-- right side current city weather info. and 5 day forcast-->
-      <div class="container"></div>
-         <div class="row" id="weather-today">
-            <h2 id="current-city">Current City Placeholder</h2>
-            <h3 id="temp">Temp:</h3>
-            <h3 id="wind">Wind:</h3>
-            <h3 id="humidity">Humidity:</h3>
-            <h3 id="uv-index">UV Index:</h3>
-         </div>
-         <div class="row" id="weather-five">
-            <h3 id="five-day">Five Day Forecast</h3>
-            <h4 class="card"></h4>
-            <h4 class="card"></h4>
-            <h4 class="card"></h4>
-            <h4 class="card"></h4>
-            <h4 class="card"></h4>
-         </div>
+   <main class="container">
+      <div class="row">
+         <!-- left side nagivation section -->
+         <section class="col-m-3" id="search-bar">
+            <form id="search-form">
+               <h2>Search for a City:</h2>
+               <input type="text" placeholder="Enter city name here"> </input>
+               <button class="btn">Search</button>
+            </form>
+            <div id="cities">
+               <h2>Recently Searched for Cities</h2>
+               <button>Placeholder City One</button>
+               <button>Placeholder City Two</button>
+            </div>
+         </section>
+         <!-- right side current city weather info. and 5 day forcast-->
+         <section class="col-m-9">
+            <div class="column-6" id="weather-today">
+               <h2 id="current-city">Current City Placeholder</h2>
+               <h3 id="temp">Temp:</h3>
+               <h3 id="wind">Wind:</h3>
+               <h3 id="humidity">Humidity:</h3>
+               <h3 id="uv-index">UV Index:</h3>
+            </div>
+            <div class="row" id="weather-five">
+               <h3 id="five-day">Five Day Forecast</h3>
+               <h4 class="column-1 card"></h4>
+               <h4 class="column-1 card"></h4>
+               <h4 class="column-1 card"></h4>
+               <h4 class="column-1 card"></h4>
+               <h4 class="column-1 card"></h4>
+            </div>
+         </section>
       </div>
    </main>
    <!-- link to jquery  -->
