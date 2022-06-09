@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>What's the Weather?</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./assets/css/style.css" />
+   <title>What's the Weather?</title>
 </head>
+
 <body>
    <!-- header -->
    <header>
-      <h1> What's the Weather? Weather Dashboard </h1>
+      <h1> What's the Weather? A Weather Dashboard </h1>
    </header>
-   
+
    <!-- main section  -->
    <main>
 
-    <!-- left side nagivation section -->
-    <nav>
-       <h1>Search for a City:</h1>
-       <textarea placeholder="Enter city name here"> </textarea>
-       <button>Search</button>
-    </nav>
-   
-    <!-- right side current city weather info. and 5 day forcast-->
-    <body>
+      <!-- left side nagivation section -->
+      <div id="search-bar">
+         <form class="search-form">
+            <h2>Search for a City:</h2>
+            <input type="text" placeholder="Enter city name here"> </input>
+            <button>Search</button>
+         </form>
+         <div>
+            <h2>Recently Searched for Cities</h2>
+            <button>Placeholder City One</button>
+            <button>Placeholder City Two</button>
+         </div>
+      </div>
 
-    </body>
+      <!-- right side current city weather info. and 5 day forcast-->
+
+      
+
+
 
    </main>
 
-<!-- link to js  -->
+   <!-- link to js  -->
    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
