@@ -24,11 +24,11 @@
    <main class="container">
       <div class="row">
          <!-- left side nagivation section -->
-         <section class="col-m-3" id="search-bar">
+         <section id="search-bar" class="col-m-3" >
             <form id="search-form">
                <h2>Search for a City:</h2>
-               <input type="text" placeholder="Enter city name here"> </input>
-               <button class="btn">Search</button>
+               <input id="city-name" type="text" placeholder="Enter city name here"> </input>
+               <button id="search-btn" class="btn">Search</button>
             </form>
             <div id="cities">
                <h2>Recently Searched for Cities</h2>
@@ -38,16 +38,16 @@
          </section>
          <!-- right side current city weather info. and 5 day forcast-->
          <section class="col-m-9">
-            <div class="column-6" id="weather-today">
+            <div id="weather-today" class="column-6">
                <h2 id="current-city">Current City Placeholder</h2>
                <h3 id="temp">Temp:</h3>
                <h3 id="wind">Wind:</h3>
                <h3 id="humidity">Humidity:</h3>
                <h3 id="uv-index">UV Index:</h3>
             </div>
-            <div class="container" id="weather-five">
+            <div id="weather-five" class="container">
                <div class="row"></div>
-                  <h3 class="col-m-12" id="five-day">Five Day Forecast</h3>
+                  <h3 id="five-day" class="col-m-12">Five Day Forecast</h3>
                   <h4 class="col-m-3 card">Day One Placeholder</h4>
                   <h4 class="col-m-3 card">Day Two Placeholder</h4>
                   <h4 class="col-m-2 card">Day Three Placeholder</h4>
