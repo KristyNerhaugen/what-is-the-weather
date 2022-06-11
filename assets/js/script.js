@@ -10,7 +10,7 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
-// function to search for city
+// function to search for new city
 
 // function to persist and click saved cities
 
@@ -48,3 +48,7 @@ fetch(apiUrl)
         alert("Unable to connect with weather");
     });
 };
+
+// function to return information that is fetched from api
+
+// event listeners so that when saved cities are clicked, information is displayed 
