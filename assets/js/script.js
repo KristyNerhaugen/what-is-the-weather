@@ -15,50 +15,60 @@
 // function to persist and click saved cities
 
 //query selector variables
-// var searchFormEl = document.querySelector("#search-form");
-// var searchButtonEl = document.querySelector("#search-btn");
+var searchFormEl = document.querySelector("#search-form");
+var searchButtonEl = document.querySelector("#search-btn");
 var cityInputEl = document.querySelector("#city-name");
 // use .value to get the input for city name 
 cityInputEl.value
 
 // function to prompt user to enter valid city name 
-// var formSubmitHandler = function(event) {
-//     // prevent page from refreshing
-//     event.preventDefault();
-// }
+var formSubmitCity = function (event) {
+    // prevent page from refreshing
+    event.preventDefault();
+    //get value from input element
+    var cityName = cityInputEl.value.trim();
+
+    if (cityName) {
+        getCityInfo(cityName);
+    } else {
+        alert("City name not found. Please enter a valid City name.")
+    }
+};
 
 // function to fetch city information (current weather, city name, date, icon, temperature, humidity, wind speed, UV index)
 
-var getCityInfo = function(cityName) {
+var getCityInfo = function (cityName) {
     // OpenWeather one call weather API
     // var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=94.04&exclude=minutely,hourly&appid=a3104bd878f3317330912583ab5d7928";
-   // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=94.04&appid=a3104bd878f3317330912583ab5d7928";   
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=a3104bd878f3317330912583ab5d7928";
-    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=a3104bd878f3317330912583ab5d7928";
-   
-// fetch information from API
-fetch(apiUrl)
-    .then(function(response) {
-        // if request is successful
-        if(response.ok) {
-            console.log(response);
-            response.json().then(function(data) {
-                console.log(data);
+    // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=94.04&appid=a3104bd878f3317330912583ab5d7928";   
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=9859fc6998842f2d4d3f91cde44162d0";
+    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=9859fc6998842f2d4d3f91cde44162d0";
 
-            });
-        } else {
-            alert('Error: City name not found.');
-        }
-    })
-    .catch(function(error) {
-        alert("Unable to connect with weather");
-    });
+    // fetch information from API
+    fetch(apiUrl)
+        .then(function (response) {
+            // if request is successful
+            if (response.ok) {
+                console.log(response);
+                response.json().then(function (data) {
+                    console.log(data);
+                    // call display weather once displayWeather function is created
+                    // displayWeather();
+                });
+            } else {
+                alert('Error: City name not found.');
+            }
+        })
+        .catch(function (error) {
+            alert("Unable to connect with weather");
+        });
 };
 
 getCityInfo();
-// function to return information that is fetched from api
 
-// event listeners so that when saved cities are clicked, information is displayed 
+//click event on search function to generate city info when clicked
+searchButtonEl.addEventListener("click", getCityInfo);
+
 
 // click event on search function
 // make sure successflly capturing CityEl
@@ -69,4 +79,4 @@ getCityInfo();
    // var citInEl = docu...
     //save this in to localStoarge ^^
    // getCityInfo(cityInputEl.value)
-//}
+//}// event listeners so that when saved cities are clicked, information is displayed 
