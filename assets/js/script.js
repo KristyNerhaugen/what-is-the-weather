@@ -17,7 +17,9 @@
 //query selector variables
 // var searchFormEl = document.querySelector("#search-form");
 // var searchButtonEl = document.querySelector("#search-btn");
-// var cityInputEl = document.querySelector("#city-name");
+var cityInputEl = document.querySelector("#city-name");
+// use .value to get the input for city name 
+cityInputEl.value
 
 // function to prompt user to enter valid city name 
 // var formSubmitHandler = function(event) {
@@ -27,10 +29,13 @@
 
 // function to fetch city information (current weather, city name, date, icon, temperature, humidity, wind speed, UV index)
 
-var getCityInfo = function() {
+var getCityInfo = function(cityName) {
     // one call weather API
-    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=94.04&exclude=minutely,hourly&appid={API key}";
- 
+    // var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=94.04&exclude=minutely,hourly&appid=a3104bd878f3317330912583ab5d7928";
+   // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=94.04&appid=9859fc6998842f2d4d3f91cde44162d0";   
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=9859fc6998842f2d4d3f91cde44162d0";
+    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=9859fc6998842f2d4d3f91cde44162d0";
+    var templateLiteral = `https://api.openweathermap.org/data/2.5/weather?q=${Boston}&APPID=9859fc6998842f2d4d3f91cde44162d0`;
 // fetch information from API
 fetch(apiUrl)
     .then(function(response) {
@@ -39,6 +44,7 @@ fetch(apiUrl)
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
+
             });
         } else {
             alert('Error: City name not found.');
@@ -49,6 +55,18 @@ fetch(apiUrl)
     });
 };
 
+getCityInfo();
 // function to return information that is fetched from api
 
 // event listeners so that when saved cities are clicked, information is displayed 
+
+// click event on search function
+// make sure successflly capturing CityEl
+// see weather forcast for current city
+// make second API call now that there is access to lat and long
+
+//searchBtn.addEventLIstener('click), function(e) {
+   // var citInEl = docu...
+    //save this in to localStoarge ^^
+   // getCityInfo(cityInputEl.value)
+//}
