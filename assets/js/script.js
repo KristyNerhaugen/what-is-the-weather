@@ -23,17 +23,28 @@
 // var formSubmitHandler = function(event) {
 //     // prevent page from refreshing
 //     event.preventDefault();
-  
-//     // get city name
-//     var cityname = cityInputEl.value.trim();
-  
-//     if (cityname) {
-//       getUserRepos(cityname);
-  
-//       // clear old content
-//       repoContainerEl.textContent = "";
-//       cityInputEl.value = "";
-//     } else {
-//       alert("Please enter a city name.");
-//     }
-//   };
+// }
+
+// function to fetch city information (current weather, city name, date, icon, temperature, humidity, wind speed, UV index)
+
+var getCityInfo = function() {
+    // one call weather API
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=94.04&exclude=minutely,hourly&appid={API key}";
+ 
+// fetch information from API
+fetch(apiUrl)
+    .then(function(response) {
+        // if request is successful
+        if(response.ok) {
+            console.log(response);
+            response.json().then(function(data) {
+                console.log(data);
+            });
+        } else {
+            alert('Error: City name not found.');
+        }
+    })
+    .catch(function(error) {
+        alert("Unable to connect with weather");
+    });
+};
