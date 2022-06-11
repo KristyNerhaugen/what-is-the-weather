@@ -32,10 +32,10 @@ cityInputEl.value
 var getCityInfo = function(cityName) {
     // one call weather API
     // var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=94.04&exclude=minutely,hourly&appid=a3104bd878f3317330912583ab5d7928";
-   // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=94.04&appid=9859fc6998842f2d4d3f91cde44162d0";   
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=9859fc6998842f2d4d3f91cde44162d0";
-    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=9859fc6998842f2d4d3f91cde44162d0";
-    var templateLiteral = `https://api.openweathermap.org/data/2.5/weather?q=${Boston}&APPID=9859fc6998842f2d4d3f91cde44162d0`;
+   // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=94.04&appid=a3104bd878f3317330912583ab5d7928";   
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=a3104bd878f3317330912583ab5d7928";
+    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=a3104bd878f3317330912583ab5d7928";
+   // var templateLiteral = `https://api.openweathermap.org/data/2.5/weather?q=${Boston}&APPID=a3104bd878f3317330912583ab5d7928`;
 // fetch information from API
 fetch(apiUrl)
     .then(function(response) {
