@@ -18,7 +18,12 @@
 var searchFormEl = document.querySelector("#search-form");
 var searchButtonEl = document.querySelector("#search-btn");
 var cityInputEl = document.querySelector("#city-name");
-// use .value to get the input for city name 
+var currentCity = document.querySelector("#current-city");
+var temp = document.querySelector("#temp");
+var wind = document.querySelector("#wind");
+var humidity = document.querySelector("#humidity");
+var uvIndex = document.querySelector("#uv-index");
+
 cityInputEl.value
 
 // function to prompt user to enter valid city name 
@@ -41,8 +46,8 @@ var getCityInfo = function (cityName) {
     // OpenWeather one call weather API
     // var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=94.04&exclude=minutely,hourly&appid=a3104bd878f3317330912583ab5d7928";
     // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=94.04&appid=a3104bd878f3317330912583ab5d7928";   
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=9859fc6998842f2d4d3f91cde44162d0";
-    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=9859fc6998842f2d4d3f91cde44162d0";
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=a3104bd878f3317330912583ab5d7928";
+    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=a3104bd878f3317330912583ab5d7928";
 
     // fetch information from API
     fetch(apiUrl)
@@ -71,7 +76,7 @@ searchButtonEl.addEventListener("click", getCityInfo);
 
 
 // click event on search function
-// make sure successflly capturing CityEl
+// make sure success capturing CityEl
 // see weather forcast for current city
 // make second API call now that there is access to lat and long
 
