@@ -18,4 +18,4 @@
 ## Credits 
 ### I used what I learned in the BootCamp Spot modules and BootCamp classes to create this quiz. I especially used what I learned in Module 6. To implement Bootstrap for the layout, I referred to https://getbootstrap.com/docs/4.3/getting-started/introduction/. I also referred to mdn (https://developer.mozilla.org/en-US/) and w3schools (https://www.w3schools.com/) frequently while working on this application. I used the Open Weather API found at https://openweathermap.org/api in the application. 
 
-## License
+## License: n/a 
