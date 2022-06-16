@@ -69,7 +69,7 @@ var getCityInfo = function (cityName) {
         });
 };
 
-getCityInfo();
+formSubmitCity();
 
 //click event on search function to generate city info when clicked
 searchButtonEl.addEventListener("click", getCityInfo);
