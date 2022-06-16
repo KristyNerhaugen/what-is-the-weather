@@ -31,7 +31,7 @@ cityInputEl.value
 // function to prompt user to enter valid city name 
 var formSubmitCity = function (event) {
     // prevent page from refreshing
-    event.preventDefault();
+   // event.preventDefault();
     //get value from input element
     var cityName = cityInputEl.value.trim();
 
@@ -100,7 +100,7 @@ var displayWeather = function(weather) {
     // append to container
     weatherDivEl.appendChild(displayedCityEl);
     // append container to the DOM
-    weatherTodayEl.appendChild(repoEl);
+    weatherTodayEl.appendChild(weatherDivEl);
   }
 };
 
@@ -108,7 +108,7 @@ formSubmitCity();
 
 //click event on search function to generate city info when clicked
 
-searchButtonEl.addEventListener("click", getCityInfo);
+searchButtonEl.addEventListener('click', getCityInfo());
 
 
 // click event on search function
