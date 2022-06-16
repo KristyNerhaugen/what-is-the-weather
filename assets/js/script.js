@@ -19,10 +19,12 @@ var searchFormEl = document.querySelector("#search-form");
 var searchButtonEl = document.querySelector("#search-btn");
 var cityInputEl = document.querySelector("#city-name");
 var currentCity = document.querySelector("#current-city");
+var weatherTodayEl = document.querySelector("#column-6");
 var temp = document.querySelector("#temp");
 var wind = document.querySelector("#wind");
 var humidity = document.querySelector("#humidity");
 var uvIndex = document.querySelector("#uv-index");
+var citySearchTerm = document.querySelector('#city-search-term');
 
 cityInputEl.value
 
@@ -35,6 +37,10 @@ var formSubmitCity = function (event) {
 
     if (cityName) {
         getCityInfo(cityName);
+        // clear out old city content
+        weatherTodayEl.textContent = '';
+        cityInputEl.value = '';
+        
     } else {
         alert("City name not found. Please enter a valid City name.")
     }
@@ -58,20 +64,49 @@ var getCityInfo = function (cityName) {
                 response.json().then(function (data) {
                     console.log(data);
                     // call display weather once displayWeather function is created
-                    // displayWeather();
+                    displayWeather(data, weather);
                 });
             } else {
                 alert('Error: City name not found.');
             }
         })
+        // catch in case of network, API, etc. issues 
         .catch(function (error) {
             alert("Unable to connect with weather");
         });
 };
 
-formSubmitCity();
+var displayWeather = function(weather) {
+    console.log(weather);
+    // check if api returned any information
+  if (weather.length === 0) {
+    weatherTodayEl.textContent = 'No weather found.';
+    return;
+  }
+  citySearchTerm.textContent = searchTerm;
+
+  // loop over weather information
+  for (var i = 0; i < weather.length; i++) {
+    // format weather to display main and description under weather on the API
+    var weatherInfo = weather[i].weather.main + weather[i].weather.description;
+
+    // create div to hold information
+    var weatherDivEl = document.createElement("div");
+    weatherDivEl.classList = "column-6";
+
+    // create a span element to hold city name
+    var displayedCityEl = document.createElement("span");
+    displayedCityEl.textContent= cityName;
+    // append to container
+    weatherDivEl.appendChild(displayedCityEl);
+    // append container to the DOM
+    weatherTodayEl.appendChild(repoEl);
+  }
+};
+// formSubmitCity();
 
 //click event on search function to generate city info when clicked
+
 searchButtonEl.addEventListener("click", getCityInfo);
 
 
