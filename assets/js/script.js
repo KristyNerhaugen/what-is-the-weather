@@ -19,7 +19,7 @@ var searchFormEl = document.querySelector("#search-form");
 var searchButtonEl = document.querySelector("#search-btn");
 var cityInputEl = document.querySelector("#city-name");
 var currentCity = document.querySelector("#current-city");
-var weatherTodayEl = document.querySelector("#column-6");
+var weatherTodayEl = document.querySelector("#weather-today");
 var temp = document.querySelector("#temp");
 var wind = document.querySelector("#wind");
 var humidity = document.querySelector("#humidity");
@@ -31,14 +31,14 @@ cityInputEl.value
 // function to prompt user to enter valid city name 
 var formSubmitCity = function (event) {
     // prevent page from refreshing
-   // event.preventDefault();
+    event.preventDefault();
     //get value from input element
     var cityName = cityInputEl.value.trim();
 
     if (cityName) {
         getCityInfo(cityName);
         // clear out old city content
-        weatherTodayEl.textContent = '';
+       // weatherTodayEl.textContent = '';
         cityInputEl.value = '';
         
     } else {
@@ -52,8 +52,8 @@ var getCityInfo = function (cityName) {
     // OpenWeather one call weather API
     // var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=94.04&exclude=minutely,hourly&appid=a3104bd878f3317330912583ab5d7928";
     // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=94.04&appid=a3104bd878f3317330912583ab5d7928";   
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=a3104bd878f3317330912583ab5d7928";
-    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=a3104bd878f3317330912583ab5d7928";
+    // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=boston&APPID=a3104bd878f3317330912583ab5d7928";
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=a3104bd878f3317330912583ab5d7928";
 
     // fetch information from API
     fetch(apiUrl)
@@ -64,7 +64,7 @@ var getCityInfo = function (cityName) {
                 response.json().then(function (data) {
                     console.log(data);
                     // call display weather once displayWeather function is created
-                    displayWeather(data, weather);
+                    displayWeather(data, cityName);
                 });
             } else {
                 alert('Error: City name not found.');
@@ -76,39 +76,27 @@ var getCityInfo = function (cityName) {
         });
 };
 
-var displayWeather = function(weather) {
-    console.log(weather);
+var displayWeather = function(data, cityName) {
+    console.log(data);
     // check if api returned any information
-  if (weather.length === 0) {
-    weatherTodayEl.textContent = 'No weather found.';
-    return;
-  }
-  citySearchTerm.textContent = searchTerm;
+  
+  citySearchTerm.textContent = cityName;
+    console.log(data.main);
+  var tempInfo = data.main.temp;
+  temp.textContent = "Temperature in Kelvin: " + tempInfo;
 
-  // loop over weather information
-  for (var i = 0; i < weather.length; i++) {
-    // format weather to display main and description under weather on the API
-    var weatherInfo = weather[i].weather.main + weather[i].weather.description;
+  var humidityInfo = data.main.humidity;
+  humidity.textContent = "Humidity: " + humidityInfo; 
 
-    // create div to hold information
-    var weatherDivEl = document.createElement("div");
-    weatherDivEl.classList = "column-6";
-
-    // create a span element to hold city name
-    var displayedCityEl = document.createElement("span");
-    displayedCityEl.textContent= cityName;
-    // append to container
-    weatherDivEl.appendChild(displayedCityEl);
-    // append container to the DOM
-    weatherTodayEl.appendChild(weatherDivEl);
-  }
+  var windInfo = data.wind.speed;
+  wind.textContent = "Wind Speed: " + windInfo;
 };
 
-formSubmitCity();
+
 
 //click event on search function to generate city info when clicked
 
-searchButtonEl.addEventListener('click', getCityInfo());
+searchButtonEl.addEventListener('click', formSubmitCity);
 
 
 // click event on search function
