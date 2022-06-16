@@ -103,7 +103,8 @@ var displayWeather = function(weather) {
     weatherTodayEl.appendChild(repoEl);
   }
 };
-// formSubmitCity();
+
+formSubmitCity();
 
 //click event on search function to generate city info when clicked
 
