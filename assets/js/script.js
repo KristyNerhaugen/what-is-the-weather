@@ -23,9 +23,9 @@ var formSubmitCity = function (event) {
     if (cityName) {
         getCityInfo(cityName);
         // clear out old city content
-       // weatherTodayEl.textContent = '';
+        // weatherTodayEl.textContent = '';
         cityInputEl.value = '';
-        
+
     } else {
         alert("City name not found. Please enter a valid City name.")
     }
@@ -35,7 +35,7 @@ var formSubmitCity = function (event) {
 
 var getCityInfo = function (cityName) {
     // OpenWeather one call weather API
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=a3104bd878f3317330912583ab5d7928";
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&APPID=a3104bd878f3317330912583ab5d7928";
 
     // fetch information from API
     fetch(apiUrl)
@@ -58,34 +58,43 @@ var getCityInfo = function (cityName) {
         });
 };
 
-var displayWeather = function(data, cityName) {
+var displayWeather = function (data, cityName) {
     console.log(data);
     // check if api returned any information
-  
-  citySearchTerm.textContent = cityName;
+
+    citySearchTerm.textContent = cityName;
     console.log(data.main);
-  var tempInfo = data.main.temp;
-  temp.textContent = "Temperature in Kelvin: " + tempInfo;
+    var tempInfo = data.main.temp;
+    temp.textContent = "Temperature: " + tempInfo;
 
-  var humidityInfo = data.main.humidity;
-  humidity.textContent = "Humidity: " + humidityInfo; 
+    var humidityInfo = data.main.humidity;
+    humidity.textContent = "Humidity: " + humidityInfo;
 
-  var windInfo = data.wind.speed;
-  wind.textContent = "Wind Speed: " + windInfo;
+    var windInfo = data.wind.speed;
+    wind.textContent = "Wind Speed: " + windInfo;
 
-  var dayInfo = moment().format("MMMM Do, YYYY");
-  day.textContent = "Today's date: " + dayInfo;
+    var dayInfo = moment().format("MMMM Do, YYYY");
+    day.textContent = "Today's date: " + dayInfo;
 
-//  started to fetch second API but wasn't successful, this API, once properly fetched, will be used to generate UV index and 5 day forcast 
-//  var apiUrl2 = "https://api.openweathermap.org/data/2.5/onecall?" +  cityName + "exclude=minutely,hourly&appid=a3104bd878f3317330912583ab5d7928";
-  
-//   fetch(apiUrl2)
-//   .then(function (response) {
-//       // if request is successful
-//       var uvInfo = data.current.uvi;
-//       console.log(data.current.uvi);
-//       //uvIndex.textContent = "UV Index: " + uvInfo;
-//   })
+    //  fetch second API to generate UV index and 5 day forcast using the latitude and longitude
+    var apiUrl2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=a3104bd878f3317330912583ab5d7928";
+    var latitude = data.coord.lat;
+    console.log(data.coord.lat);
+    var longitude = data.coord.lon;
+    console.log(data.coord.lon);
+    // this fetch still isn't successful
+     fetch(apiUrl2).then(function (response) {
+        console.log(response);
+          // if request is successful
+        if (response.ok) {
+        response.json().then(function (data) {
+            console.log(data);
+             })
+            }
+        //   var uvInfo = data.current.uvi;
+        //   console.log(data.current.uvi);
+    //       //uvIndex.textContent = "UV Index: " + uvInfo;
+      })
 
 };
 
