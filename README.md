@@ -1,6 +1,6 @@
 # Challenge Six: Weather Dashboard
 
-## For this challenge, I started to create a weather dashboard. I ran out of time and this project is incomplete. As of now, the layout is set up with some minor styling. The page is fetching information from the Open Weather api, but that information doesn't yet display on the page. There are many improvements that I need to make on this application in the future for it to be functional. 
+## For this challenge, I started to create a weather dashboard. I ran out of time and this project is incomplete. As of now, the layout is set up with some minor styling. The page is fetching information from the Open Weather API. Users can search for a city and find the current temperature, wind speed, and humidity. The current city name and the current date also displays. There are many improvements that I need to make on this application in the future for it to be fully functional. 
 
 ### This link will take you to the deployed application:
 
@@ -10,7 +10,7 @@
 ### Access the code via GitHub. Install how you would usually install from a GitHub repository. 
 
 ## Usage
-### Once fully functional, this application is to be used to see the current weather and five day forecast for any searched for city. 
+### Once fully functional, this application is to be used to see the current weather and five day forecast for any searched for city. For now, it only displays temperature, wind speed, and humidity. 
 
 ### This image shows the deployed site:
 #### ![Screen Shot the Weather Dashboard](assets/images/screenshot.png)
