@@ -10,6 +10,7 @@ var wind = document.querySelector("#wind");
 var humidity = document.querySelector("#humidity");
 var uvIndex = document.querySelector("#uv-index");
 var citySearchTerm = document.querySelector('#city-search-term');
+var futureForcast = document.querySelector('#future-forcast');
 
 cityInputEl.value
 
@@ -99,8 +100,13 @@ var apiUrl2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&l
          console.log(`uvi for day ${i}is : ${uvi}`)
 
         uvIndex.textContent = `UV Index: ${uvi}`;
+        // var forcast = dailyWeather[i].
+        // futureForcast.textContent = `The seven day forcast is ${forcast}`;
         }
         console.log("daily weather is ", dailyWeather);
+
+        
+
          });
     }
     else {
