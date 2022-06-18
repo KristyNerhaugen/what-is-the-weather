@@ -76,27 +76,41 @@ var displayWeather = function (data, cityName) {
     var dayInfo = moment().format("MMMM Do, YYYY");
     day.textContent = "Today's date: " + dayInfo;
 
-    //  fetch second API to generate UV index and 5 day forcast using the latitude and longitude
-    var apiUrl2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=a3104bd878f3317330912583ab5d7928";
-    var latitude = data.coord.lat;
-    console.log(data.coord.lat);
-    var longitude = data.coord.lon;
-    console.log(data.coord.lon);
-    // this fetch still isn't successful
-     fetch(apiUrl2).then(function (response) {
-        console.log(response);
-          // if request is successful
-        if (response.ok) {
-        response.json().then(function (data) {
-            console.log(data);
-             })
-            }
-        //   var uvInfo = data.current.uvi;
-        //   console.log(data.current.uvi);
-    //       //uvIndex.textContent = "UV Index: " + uvInfo;
-      })
+    
 
+var apiKey = "a3104bd878f3317330912583ab5d7928";
+//  fetch second API to generate UV index and 5 day forcast using the latitude and longitude
+var latitude = data.coord.lat;
+console.log(data.coord.lat);
+var longitude = data.coord.lon;
+console.log(data.coord.lon);
+var apiUrl2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+// this fetch still isn't successful
+ fetch(apiUrl2).then(function (response) {
+    console.log(response);
+      // if request is successful
+    if (response.ok) {
+    response.json().then(function (data) {
+        var dailyWeather = data.daily;
+        for (let i = 0; i < dailyWeather.length; i++) {
+            // var day = dailyWeather[i];
+         var uvi = dailyWeather[i].uvi;
+         console.log(`uvi for day ${i}is : ${uvi}`)
+
+        uvIndex.textContent = `UV Index: ${uvi}`;
+        }
+        console.log("daily weather is ", dailyWeather);
+         });
+    }
+    else {
+        alert("Alert--there was an issue with request for weather.");
+    }
+    
+    //   var uvInfo = data.current.uvi;
+    //   console.log(data.current.uvi);
+      //uvIndex.textContent = "UV Index: " + uvInfo;
+ })
 };
-
 //click event on search function to generate city info when clicked
 searchButtonEl.addEventListener('click', formSubmitCity);
