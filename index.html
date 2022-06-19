@@ -28,7 +28,7 @@
             <form id="search-form">
                <h2>Search for a City:</h2>
                <input id="city-name" type="text" placeholder="Enter city name here"> </input>
-               <button id="search-btn" class="btn">Search Button</button>
+               <button id="search-btn" class="btn">Search</button>
             </form>
             <div id="cities">
                <h2>Recently Searched for Cities</h2>
@@ -49,11 +49,12 @@
             <div id="weather-five" class="container">
                <div class="row" id="future-forcast"></div>
                   <h3 id="five-day" class="col-m-12">Five Day Forecast</h3>
-                  <h4 class="col-m-3 card">Day One Placeholder</h4>
-                  <h4 class="col-m-3 card">Day Two Placeholder</h4>
-                  <h4 class="col-m-2 card">Day Three Placeholder</h4>
-                  <h4 class="col-m-2 card">Day Four Placeholder</h4>
-                  <h4 class="col-m-2 card">Day Five Placeholder</h4>
+                  <div id="day-one">
+                     <h4 id="day-one-date">Tomorrow's Forecast</h4>
+                     <p id="day-one-temp"></p>
+                     <p id ="day-one-wind"></p>
+                     <p id="day-one-humidity"></p>
+                  </div>
                </div>
             </div>
          </section>

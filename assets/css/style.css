@@ -1,0 +1,17 @@
+.column-6 {
+    border: solid 2px black;
+    padding: 5px;
+}
+
+#weather-five{
+    border: soild 2px black;
+    padding: 5px;
+}
+
+#search-btn {
+    background-color: teal;
+}
+
+#day-one {
+    border: solid 2px black;
+}
